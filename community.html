@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다른 사람이 만든 세이브본 · 조별스서버</title>
+    <link rel="stylesheet" href="archive.css">
+    <script src="archive.js" defer></script>
+</head>
+<body data-page="archive" data-archive-scope="community" data-root-name="다른 사람이 만든 세이브본">
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="./" aria-label="조별스서버 아카이브 홈"><span class="brand-mark" aria-hidden="true">JS</span><span>조별스서버 아카이브</span></a>
+            <nav class="top-links" aria-label="아카이브 페이지"><a href="mine.html">내 보관함</a><a href="community.html" aria-current="page">공동 보관함</a></nav>
+            <div class="account-area"><span class="account-label" id="account-label" hidden></span><button class="text-button" id="login-open" type="button">로그인</button><button class="text-button" id="logout-button" type="button" hidden>로그아웃</button></div>
+        </div>
+    </header>
+    <main class="archive-main">
+        <section class="intro archive-intro" aria-labelledby="page-title">
+            <p class="eyebrow">COMMUNITY · SHARED ARCHIVE</p>
+            <h1 id="page-title">다른 사람이 만든 세이브본</h1>
+            <p class="intro-copy">모든 방문자가 공동 세이브본을 볼 수 있습니다. 파일과 연도별 폴더를 추가하려면 로그인하세요.</p>
+        </section>
+        <section aria-labelledby="folder-section-title">
+            <div class="section-heading"><h2 id="folder-section-title">공동 폴더</h2><span class="section-note">SHARED WITH EVERYONE</span></div>
+            <div class="archive-workspace" id="archive-workspace">
+                <aside class="folder-sidebar" aria-label="공동 세이브본 폴더">
+                    <div class="folder-heading"><h3>폴더</h3><button class="icon-button" id="add-folder-button" type="button" aria-label="현재 폴더 안에 새 폴더 만들기" title="새 폴더 만들기">+</button></div>
+                    <nav class="folder-list" id="folder-list" aria-label="공동 폴더 목록"></nav>
+                    <p class="folder-note">공동 폴더와 파일은 모든 방문자에게 표시됩니다.</p>
+                </aside>
+                <section class="file-panel" aria-label="폴더 파일">
+                    <div class="file-toolbar"><div><p class="eyebrow">SELECTED FOLDER</p><h3 id="current-folder-name">불러오는 중...</h3></div><button class="action-button" id="upload-button" type="button"><span aria-hidden="true">↑</span> SAV 업로드</button><input id="file-input" type="file" accept=".sav" multiple hidden></div>
+                    <p class="upload-note">로그인한 계정 이름이 등록자로 표시됩니다.</p>
+                    <p class="app-status" id="app-status" role="status" aria-live="polite"></p>
+                    <div class="file-list" id="file-list"></div>
+                    <div class="empty-files" id="empty-files" hidden><strong>이 폴더는 비어 있습니다</strong><span>공동 폴더를 선택하거나 로그인해 `.sav` 파일을 추가하세요.</span></div>
+                </section>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer"><span>조별스서버 · OpenTTD save archive</span></footer>
+    <dialog class="dialog" id="auth-dialog" aria-labelledby="auth-title">
+        <div class="dialog-heading"><h2 id="auth-title">로그인</h2><button class="icon-button" type="button" data-dialog-close="auth-dialog" aria-label="닫기">×</button></div>
+        <div class="auth-tabs" role="tablist" aria-label="계정 작업 선택"><button class="auth-tab is-active" type="button" role="tab" aria-selected="true" data-auth-mode="login">로그인</button><button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth-mode="register">회원가입</button></div>
+        <form id="auth-form"><label for="auth-username">아이디</label><input class="dialog-input" id="auth-username" name="username" type="text" minlength="2" maxlength="30" autocomplete="username" required><label for="auth-password">비밀번호</label><input class="dialog-input" id="auth-password" name="password" type="password" minlength="8" maxlength="256" autocomplete="current-password" required><p class="dialog-status" id="auth-status" role="status" aria-live="polite"></p><div class="dialog-actions"><button class="text-button" type="button" data-dialog-close="auth-dialog">취소</button><button class="action-button" id="auth-submit" type="submit">로그인</button></div></form>
+    </dialog>
+    <dialog class="dialog" id="folder-dialog" aria-labelledby="folder-dialog-title">
+        <div class="dialog-heading"><h2 id="folder-dialog-title">새 폴더 만들기</h2><button class="icon-button" type="button" data-dialog-close="folder-dialog" aria-label="닫기">×</button></div>
+        <p><span id="parent-folder-name"></span> 안에 추가됩니다.</p>
+        <form id="folder-form"><label for="new-folder-name">폴더 이름</label><input class="dialog-input" id="new-folder-name" name="folderName" type="text" maxlength="60" required><p class="dialog-status" id="folder-status" role="status" aria-live="polite"></p><div class="dialog-actions"><button class="text-button" type="button" data-dialog-close="folder-dialog">취소</button><button class="action-button" type="submit">폴더 만들기</button></div></form>
+    </dialog>
+</body>
+</html>
